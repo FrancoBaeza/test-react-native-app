@@ -1,22 +1,19 @@
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import 'react-native-gesture-handler'
+import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+
+import HomeNavigator from './src/navigators/HomeNavigator'
+import UserNavigator from './src/navigators/UserNavigator'
+
+const Tab = createBottomTabNavigator()
 
 export default function App() {
     return (
-         <SafeAreaView style={s.container}>
-            <View style={s.container}>
-                <Text>Hola tonto</Text>
-                {/* <StatusBar style="auto" /> */}
-            </View>
-        </SafeAreaView>
+        <NavigationContainer>
+            <Tab.Navigator screenOptions={{ headerShown: false }}>
+                <Tab.Screen name="HomeNavigator" component={HomeNavigator} />
+                <Tab.Screen name="UserNavigator" component={UserNavigator} />
+            </Tab.Navigator>
+        </NavigationContainer>
     )
 }
-
-const s = StyleSheet.create({
-    container: {
-        // flex: 1,
-        // backgroundColor: '#fff',
-        // alignItems: 'center',
-        // justifyContent: 'center'
-    }
-})
