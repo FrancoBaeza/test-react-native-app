@@ -4,52 +4,15 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Svg, { Path } from 'react-native-svg'
 
 import { Feather, FontAwesome5 } from '@expo/vector-icons'
+import { AntDesign } from '@expo/vector-icons'
 
 export default HomeScreen = ({ navigation }) => {
-    const lista = [
-        {
-            id: 1,
-            name: 'Burger',
-            price: 10
-        },
-        {
-            id: 2,
-            name: 'Burger',
-            price: 10
-        },
-        {
-            id: 3,
-            name: 'Burger',
-            price: 10
-        },
-        {
-            id: 4,
-            name: 'Burger',
-            price: 10
-        },
-        {
-            id: 5,
-            name: 'Burger',
-            price: 10
-        },
-        {
-            id: 6,
-            name: 'Burger',
-            price: 10
-        },
-        {
-            id: 7,
-            name: 'Burger',
-            price: 10
-        }
-    ]
-
     return (
         <SafeAreaView className=" flex flex-col bg-slate-100">
             <ScrollView>
-                <View className="mt-[20] p-[20] flex-row justify-between">
+                <View className="p-[20] flex-row justify-between">
                     {/* Location */}
-                    <View className="gap-[5] tracking-wider">
+                    <View className="gap-[] tracking-wider">
                         <Text className=" tracking-wider text-base text-gray-500">
                             Tu ubicación
                         </Text>
@@ -70,58 +33,210 @@ export default HomeScreen = ({ navigation }) => {
                 </View>
 
                 {/* Search input */}
-                <View className=" mt-[10] px-[20]">
-                    <View className="px-[15] h-[50] border-gray-400 rounded-lg border-[2px] flex-row items-center">
-                        <Feather
-                            name="search"
-                            size={24}
-                            color="rgb(75 85 99)"
-                        />
-                        <TextInput
-                            // onChangeText={(text) => {
-                            //     setCredentials({
-                            //         ...credentials,
-                            //         username: text
-                            //     })
-                            // }}
-                            // value={credentials.username}
+                <View className="mt-[10] mx-[20] px-[15] h-[50] border-gray-400 rounded-lg border-[2px] flex-row items-center">
+                    <Feather name="search" size={24} color="rgb(75 85 99)" />
+                    <TextInput
+                        // onChangeText={(text) => {
+                        //     setCredentials({
+                        //         ...credentials,
+                        //         username: text
+                        //     })
+                        // }}
+                        // value={credentials.username}
 
-                            placeholder="Busca lo que quieras..."
-                            placeholderTextColor="rgb(156 163 175)"
-                            className="text-lg text-gray-600  px-[10]"
-                        ></TextInput>
-                    </View>
+                        placeholder="Busca lo que quieras..."
+                        placeholderTextColor="rgb(156 163 175)"
+                        className="text-lg text-gray-600  px-[10]"
+                    ></TextInput>
+                </View>
 
-                    {/* Categories */}
+                {/* Categories */}
+                <ScrollView
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                    className="mt-[30] flex-row ml-[20]"
+                >
+                    {[1, 2, 3, 4, 5].map((item) => (
+                        <View
+                            key={item}
+                            className="flex-col items-center mr-[20]"
+                        >
+                            <FontAwesome5
+                                name="hamburger"
+                                size={30}
+                                color="black"
+                            />
+                            <Text className=" text-xs font-semibold">
+                                Hamburguesa
+                            </Text>
+                        </View>
+                    ))}
+                </ScrollView>
+
+                {/* Banners */}
+                <ScrollView
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                    className="mt-[30] flex-row"
+                >
+                    {/* Padding view */}
+                    <View className={`w-[20]`}></View>
+
+                    {[1, 2, 3, 4, 5].map((item) => (
+                        <View
+                            key={item}
+                            className=" w-[250] h-[150] bg-gray-500 rounded-lg flex-col items-center mr-[20]"
+                        ></View>
+                    ))}
+                </ScrollView>
+
+                {/* Promos */}
+                <View className={`mt-[30]`}>
+                    <Text className="text-2xl font-semibold ml-[20] ">
+                        Promociones
+                    </Text>
                     <ScrollView
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
-                        className="mt-[20] flex-row"
+                        className="mt-[10] flex-row"
                     >
+                        {/* Padding view */}
+                        <View className={`w-[20]`}></View>
+
                         {[1, 2, 3, 4, 5].map((item) => (
-                            <View className="flex-col items-center mr-[20]">
-                                <FontAwesome5
-                                    name="hamburger"
-                                    size={30}
-                                    color="black"
-                                />
-                                <Text className=" text-xs font-semibold">
-                                    Hamburguesa
-                                </Text>
+                            <View
+                                key={item}
+                                className=" w-[170] h-[250] flex-col items-center mr-[15] "
+                            >
+                                {/* Image */}
+                                <View className="w-full flex-[3] bg-gray-400 rounded-t-lg"></View>
+
+                                {/* Info */}
+                                <View className="w-full flex-[2] bg-gray-500 rounded-b-lg"></View>
                             </View>
                         ))}
                     </ScrollView>
+                </View>
 
-                    {/* Banners */}
+                {/* Other favs */}
+                <View className={`mt-[30]`}>
+                    <Text className="text-2xl font-semibold ml-[20] ">
+                        Otros Favoritos
+                    </Text>
+
                     <ScrollView
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
-                        className="mt-[20] flex-row"
+                        className="mt-[10] flex-row"
                     >
+                        {/* Padding view */}
+                        <View className={`w-[20]`}></View>
+
                         {[1, 2, 3, 4, 5].map((item) => (
-                            <View className=" w-[230] h-[130] bg-gray-500 rounded-lg flex-col items-center mr-[20]">
+                            <View
+                                key={item}
+                                className="h-[250] flex-col mr-[20] "
+                            >
+
+                                {/* Item 1 */}
+                                <View className={`flex-row  gap-[10]`}>
+                                    {/* Image */}
+                                    <View
+                                        className={`h-[80] w-[80] bg-gray-400 rounded-lg`}
+                                    ></View>
+
+                                    {/* Info */}
+                                    <View className={`py-[3] justify-between`}>
+                                        <View className={`flex-col`}>
+                                            <Text className="text-base font-semibold">
+                                                Coffe shop
+                                            </Text>
+                                            <Text className="text-xs text-gray-500">
+                                                12 Min - 1.6 Km
+                                            </Text>
+                                        </View>
+
+                                        {/* Stars */}
+                                        <View className="gap-[2] flex-row font-semibold">
+                                            <AntDesign
+                                                name="star"
+                                                size={16}
+                                                color="#FFD700"
+                                            />
+                                            <AntDesign
+                                                name="star"
+                                                size={16}
+                                                color="#FFD700"
+                                            />
+                                            <AntDesign
+                                                name="star"
+                                                size={16}
+                                                color="#FFD700"
+                                            />
+                                            <AntDesign
+                                                name="star"
+                                                size={16}
+                                                color="#FFD700"
+                                            />
+                                            <AntDesign
+                                                name="star"
+                                                size={16}
+                                                color="#FFD700"
+                                            />
+                                        </View>
+                                    </View>
                                 </View>
-                        ))}   
+
+                                {/* Item 2 */}
+                                <View className={`flex-row  gap-[10] mt-[7]`}>
+                                    {/* Image */}
+                                    <View
+                                        className={`h-[80] w-[80] bg-gray-400 rounded-lg`}
+                                    ></View>
+
+                                    {/* Info */}
+                                    <View className={`py-[3] justify-between`}>
+                                        <View className={`flex-col`}>
+                                            <Text className="text-base font-semibold">
+                                                Guelcom
+                                            </Text>
+                                            <Text className="text-xs text-gray-500">
+                                                12 Min - 1.6 Km
+                                            </Text>
+                                        </View>
+
+                                        {/* Stars */}
+                                        <View className="gap-[2] flex-row font-semibold">
+                                            <AntDesign
+                                                name="star"
+                                                size={16}
+                                                color="#FFD700"
+                                            />
+                                            <AntDesign
+                                                name="star"
+                                                size={16}
+                                                color="#FFD700"
+                                            />
+                                            <AntDesign
+                                                name="star"
+                                                size={16}
+                                                color="#FFD700"
+                                            />
+                                            <AntDesign
+                                                name="star"
+                                                size={16}
+                                                color="#FFD700"
+                                            />
+                                            <AntDesign
+                                                name="star"
+                                                size={16}
+                                                color="#FFD700"
+                                            />
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+                        ))}
                     </ScrollView>
                 </View>
             </ScrollView>
